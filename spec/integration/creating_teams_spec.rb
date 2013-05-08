@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 feature "creating teams" do
-  scenario "can create a team" do
+  before do
     visit '/'
     click_link 'New Team'
+  end
+  scenario "can create a team" do
     fill_in 'Name', with: 'House Chores'
     click_button 'Create Team'
     page.should have_content('Your team has been created.')
@@ -12,5 +14,11 @@ feature "creating teams" do
     page.current_url.should == team_url(team)
     title = "House Chores - Teams - Pestr"
     find("title").should have_content(title)
+  end
+
+  scenario "cannot create a team without a name" do
+    click_button 'Create Team'
+    page.should have_content("Your team was not created.")
+    page.should have_content("Name can't be blank")
   end
 end

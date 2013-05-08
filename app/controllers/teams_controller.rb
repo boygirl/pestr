@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-
+    @teams = Team.all
   end
 
   def show
@@ -17,12 +17,12 @@ class TeamsController < ApplicationController
       redirect_to @team, notice: "Your team has been created."
     else
       flash[:alert] = "Your team was not created."
-      render new
+      render action: "new"
     end
   end
 
   def edit
-
+    @team = Team.find(params[:id])
   end
 
   def update
