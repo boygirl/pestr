@@ -7,5 +7,10 @@ feature "creating teams" do
     fill_in 'Name', with: 'House Chores'
     click_button 'Create Team'
     page.should have_content('Your team has been created.')
+
+    team = Team.find_by_name("House Chores")
+    page.current_url.should == team_url(team)
+    title = "House Chores - Teams - Pestr"
+    find("title").should have_content(title)
   end
 end
