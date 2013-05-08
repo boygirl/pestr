@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
+  before_filter :find_team, only: [:show, :edit, :update, :destroy]
   def index
     @teams = Team.all
   end
 
   def show
-    @team = Team.find(params[:id])
   end
 
   def new
@@ -22,11 +22,9 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
     if @team.update_attributes(params[:team])
       redirect_to @team, notice: "Your team has been updated."
     else
@@ -36,9 +34,16 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = Team.find(params[:id])
     @team.destroy
     flash[:notice] = "Your team has been deleted."
     redirect_to '/'
   end
+
+  private
+    def find_team
+      @team = Team.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The team you were looking for could not be found."
+      redirect_to teams_path
+    end
 end
