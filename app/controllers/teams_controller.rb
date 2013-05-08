@@ -26,7 +26,13 @@ class TeamsController < ApplicationController
   end
 
   def update
-
+    @team = Team.find(params[:id])
+    if @team.update_attributes(params[:team])
+      redirect_to @team, notice: "Your team has been updated."
+    else
+      flash[:alert] = "Your team was not updated."
+      render action: "edit"
+    end
   end
 
   def destroy
