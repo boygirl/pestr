@@ -11,13 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509212139) do
+ActiveRecord::Schema.define(:version => 20130509215717) do
 
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "todos", :force => true do |t|
+    t.integer  "priority"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "what"
+    t.integer  "member_id"
+    t.integer  "when"
+  end
+
+  add_index "todos", ["team_id"], :name => "index_todos_on_team_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
