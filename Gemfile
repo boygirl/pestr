@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 gem 'dynamic_form', '1.1.4'
+gem 'devise', '2.1.0'
+gem 'devise_invitable', '~> 1.1.0'
 
 
 # Gems used only for assets and not required
@@ -33,7 +35,6 @@ group :test do
   gem 'email_spec', '1.2.1'
 end
 
-gem 'devise', '2.1.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
