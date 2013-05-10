@@ -1,0 +1,11 @@
+<footer class="navbar navbar-fixed-bottom">
+  <div class ="navbar-inner">
+    <div class="container">
+      <nav>
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</footer>

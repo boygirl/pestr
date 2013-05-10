@@ -13,25 +13,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <% flash.each do |key, value| %>
-    <div class='flash' id='<% key %>'>
-      <%= value %>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= render 'layouts/header' %>
     </div>
-  <% end %>
-
-  <nav>
-    <% if user_signed_in? %>
-      Signed in as <%= current_user.email %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
-  </nav>
-  <nav>
-    <%= link_to "Sign in", new_user_session_path %>
-  </nav>
-
-  <%= yield %>
-
+    <div class="span11 offset1">
+      <% flash.each do |key, value| %>
+        <div class='flash' id='<% key %>'>
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+    <div class="span11 offset1">
+     <%= yield %>
+    </div>
+  </div>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
