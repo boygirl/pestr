@@ -6,7 +6,7 @@
         <ul class="nav pull-right">
           <% if user_signed_in? %>
             <li>
-              <%= link_to current_user.email, profiles_path %>
+              <%= link_to current_user.email%>
             </li>
             <li>
               <%= link_to "Sign out", destroy_user_session_path,
