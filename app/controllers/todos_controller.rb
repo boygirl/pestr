@@ -23,15 +23,22 @@ class TodosController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @todo.update_attributes(params[:todo])
+      flash[:notice] = "Your todo has been updated."
+      redirect_to @team
+    else
+      flash[:alert] = "Your todo has not been updated."
+      render :action => :edit
+    end
   end
 
   def destroy
-
+    @todo.destroy
+    flash[:notice] = "Your todo has been deleted."
+    redirect_to @team
   end
 
   private

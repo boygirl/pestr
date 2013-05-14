@@ -15,4 +15,9 @@ feature "creating todos" do
     click_button "Create Todo"
     page.should have_content("Your todo has been created.")
   end
+
+  scenario "don't create a todo with bad data" do
+    click_button "Create Todo"
+    page.should have_content("Your todo has not been created.")
+  end
 end
