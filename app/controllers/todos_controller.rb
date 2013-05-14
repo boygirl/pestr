@@ -12,7 +12,14 @@ class TodosController < ApplicationController
   end
 
   def create
-
+    @todo = @team.todos.build(params[:todo])
+    if @todo.save
+      flash[:notice] = "Your todo has been created."
+      redirect_to @team
+    else
+      flash[:alert] = "Your todo has not been created."
+      render :action => "new"
+    end
   end
 
   def edit
@@ -29,7 +36,7 @@ class TodosController < ApplicationController
 
   private
     def find_team
-      @team = Team.find(params[:id])
+      @team = Team.find(params[:team_id])
       rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The team you were looking for could not be found."
       redirect_to teams_path
