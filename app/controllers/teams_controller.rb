@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @todos = @team.todos
   end
 
   def new
