@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 feature "creating teams" do
+  let!(:user) { Factory(:confirmed_user) }
   before do
+    sign_in_as!(user)
     visit '/'
     click_link 'New Team'
   end
