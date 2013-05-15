@@ -17,4 +17,9 @@ feature "creating members" do
     page.should have_content "A new member has been added to your team!"
   end
 
+  scenario "don't create a member without a name" do
+    click_button "Create Member"
+    page.should have_content "No one was added to your team."
+  end
+
 end
