@@ -4,6 +4,7 @@ Pestr::Application.routes.draw do
   root to: "teams#index"
   resources :teams do
     resources :todos
+    resources :members
   end
 
 end
