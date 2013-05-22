@@ -1,8 +1,12 @@
 require "spec_helper"
 
 feature "editing teams" do
+  let!(:user)  { Factory(:confirmed_user) }
+  let!(:team) { Factory(:team, name: "House Chores") }
+
   before do
-    team = Factory.create(:team, name: "House Chores")
+    sign_in_as!(user)
+    user.teams<<(team)
     visit '/'
     click_link 'House Chores'
     click_link "Edit Team"

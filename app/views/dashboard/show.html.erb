@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <h2>Check out your teams!</h2>
+  <%= render partial: "teams/team_list" %>
+  <%= link_to "Create Team", new_team_path %>
+<% end %>

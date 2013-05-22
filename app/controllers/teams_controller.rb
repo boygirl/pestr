@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(params[:team])
     if @team.save
+      @team.users<<(current_user)
       redirect_to @team, notice: "Your team has been created."
     else
       flash[:alert] = "Your team was not created."
@@ -27,6 +28,7 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update_attributes(params[:team])
+      @team.users<<(current_user)
       redirect_to @team, notice: "Your team has been updated."
     else
       flash[:alert] = "Your team was not updated."

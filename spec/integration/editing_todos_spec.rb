@@ -5,6 +5,7 @@ feature "editing todos" do
   let!(:team) { Factory(:team, name: "my awesome team") }
   let!(:todo) { Factory(:todo, team_id: team.id) }
   before do
+    user.teams<<(team)
     sign_in_as!(user)
     visit '/'
     click_link(team.name)

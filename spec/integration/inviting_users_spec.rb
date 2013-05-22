@@ -6,6 +6,7 @@ feature 'inviting users' do
 
   before do
     sign_in_as!(user)
+    team.users<<(user)
     visit '/'
     click_link(team.name)
     click_link 'Invite Administrator'

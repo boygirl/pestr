@@ -4,6 +4,7 @@ feature "creating members" do
   let!(:user)  { Factory(:confirmed_user) }
   let!(:team) { Factory(:team, name: "my awesome team") }
   before do
+    user.teams<<(team)
     sign_in_as!(user)
     visit '/'
     click_link(team.name)

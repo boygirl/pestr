@@ -1,10 +1,17 @@
 require 'spec_helper'
 
   feature "Viewing teams" do
-    scenario "listing all teams" do
-    team = Factory.create(:team, name: "House Chores")
+    let!(:user)  { Factory(:confirmed_user) }
+  let!(:team) { Factory(:team, name: "my awesome team") }
+
+  before do
+    user.teams<<(team)
+    sign_in_as!(user)
     visit '/'
-    click_link 'House Chores'
+  end
+
+    scenario "listing all teams" do
+    click_link 'my awesome team'
     page.current_url.should == team_url(team)
   end
 end
