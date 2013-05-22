@@ -3,6 +3,7 @@
   <h1><%= @team.name %></h1>
   <div class="span12"id='team'>
     <div id="actions">
+        <%= link_to 'Invite Administrator', new_user_invitation_path %> |
         <%= link_to 'Edit Team', edit_team_path(@team) %> |
         <%= link_to 'Delete Team', (@team),
               method: :delete,

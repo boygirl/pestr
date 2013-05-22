@@ -1,14 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 3.2.11'
+gem 'devise', '~> 2.2'
+gem 'devise_invitable', '~> 1.1.0'
+gem 'dynamic_form', '1.1.4'
+gem 'bootstrap-sass', '2.1'
+gem 'cancan', '1.6.7'
+gem 'phony_rails'
+gem 'twilio-ruby', '~> 3.9.0'
+gem 'gravatar_image_tag'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'dynamic_form', '1.1.4'
-gem 'devise', '2.1.0'
-gem 'devise_invitable', '~> 1.1.0'
+
 
 
 # Gems used only for assets and not required
@@ -25,8 +32,17 @@ end
 
 gem 'jquery-rails'
 
-group :test, :development  do
-  gem 'rspec-rails', '~> 2.11'
+group :test, :development do
+  gem 'rspec-rails', '~> 2.13.0'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'launchy'
+  gem 'pry-debugger'
+  gem 'letter_opener'
+  gem 'sqlite3'
+  gem 'pry', '~> 0.9'
+  gem 'simplecov', :require => false
+
 end
 
 group :test do
@@ -34,6 +50,12 @@ group :test do
   gem 'factory_girl', '2.6.4'
   gem 'email_spec', '1.2.1'
 end
+
+group :production do
+  gem 'pg', '~> 0.14'
+end
+
+
 
 
 # To use ActiveModel has_secure_password
