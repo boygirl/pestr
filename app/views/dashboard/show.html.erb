@@ -2,4 +2,7 @@
   <h2>Check out your teams!</h2>
   <%= render partial: "teams/team_list" %>
   <%= link_to "Create Team", new_team_path %>
+<% else %>
+  <h2>Welcome to Pestr!</h2>
+  <p>Filler content for people who are not signed up yet!</p>
 <% end %>
