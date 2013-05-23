@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "creating teams" do
-  let!(:user) { Factory(:confirmed_user) }
+  let!(:user) { Factory(:confirmed_user, name: "Lauren") }
   before do
     sign_in_as!(user)
     visit '/'
@@ -17,5 +17,11 @@ feature "creating teams" do
     click_button 'Create Team'
     page.should have_content("Your team was not created.")
     page.should have_content("Name can't be blank")
+  end
+
+  scenario "Team membership includes creator" do
+    fill_in 'Name', with: 'Build a Sauna'
+    click_button 'Create Team'
+    page.should have_content('Lauren')
   end
 end
