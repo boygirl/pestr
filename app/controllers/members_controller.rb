@@ -3,6 +3,10 @@ class MembersController < ApplicationController
   before_filter :find_member, only: [:show, :edit, :update, :destroy]
 
 
+  def index
+
+  end
+
   def show
 
   end
