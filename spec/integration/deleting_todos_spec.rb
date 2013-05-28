@@ -3,7 +3,8 @@ require "spec_helper"
 feature "deleting todos" do
   let!(:user)  { Factory(:confirmed_user) }
   let!(:team) { Factory(:team, name: "my awesome team") }
-  let!(:todo) { Factory(:todo, what: "clean something", team_id: team.id) }
+  let!(:member) { Factory(:member, team_id: team.id) }
+  let!(:todo) { Factory(:todo, team_id: team.id, member_id: member.id) }
   before do
     user.teams<<(team)
     sign_in_as!(user)

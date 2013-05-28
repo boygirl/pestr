@@ -9,11 +9,10 @@ feature "creating todos" do
     sign_in_as!(user)
     visit '/'
     click_link(team.name)
-    click_link "New Todo"
   end
 
   scenario "create a todo" do
-    fill_in "What", with: "Clean the House"
+    fill_in "what", with: "Clean the House"
     click_button "Create Todo"
     page.should have_content("Your todo has been created.")
   end

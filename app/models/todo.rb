@@ -6,13 +6,21 @@ class Todo < ActiveRecord::Base
 
   def when_string
     if self.when == 1
-      "Eventually"
+      "eventually"
     elsif self.when == 2
-      "This week"
+      "this week"
     elsif self.when == 3
-      "Today"
+      "today"
     else
-      "Eventually"
+      "eventually"
+    end
+  end
+
+  def who_string
+    if self.member_id == 0
+      "Someone"
+    else
+      "#{Member.find(self.member_id).name}"
     end
   end
 end

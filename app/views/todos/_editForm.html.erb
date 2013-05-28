@@ -1,4 +1,4 @@
-<%= form_for [@team, Todo.new] do |f| %>
+<%= form_for [@team, @todo] do |f| %>
   <%= f.error_messages %>
   <% members_array = Member.where(team_id: @team.id).map { |member| [member.name, member.id] }%>
   <% members_array.unshift(["Someone", 0 ]) %>

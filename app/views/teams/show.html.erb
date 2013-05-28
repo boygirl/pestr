@@ -36,7 +36,7 @@
       <ul id='todos'>
         <% @team.todos.each do |todo| %>
           <div id="<%=todo.what%>">
-            <h4 size= "5"><%="#{todo.member_id} needs to #{todo.what} #{todo.when_string}"%></h4>
+            <h4 size= "5"><%="#{todo.who_string} needs to #{todo.what} #{todo.when_string}"%></h4>
             <div id="actions">
               <%= link_to 'Edit', [:edit, @team, todo] %> |
               <%= link_to 'Delete', [@team, todo],
@@ -46,7 +46,7 @@
           </div>
         <% end %>
       </ul>
-            <%= link_to 'New Todo', new_team_todo_path(@team) %>
+            <%= render "todos/form" %>
     </div>
   </div>
 </div>

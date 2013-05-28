@@ -17,6 +17,7 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
     if @team.save
       @team.users<<(current_user)
+      @team.members<<(Member.new(id: 0, name: "Someone"))
       @team.members<<(Member.new(name: current_user.name, phone: current_user.phone))
       redirect_to @team, notice: "Your team has been created."
     else

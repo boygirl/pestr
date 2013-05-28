@@ -3,7 +3,8 @@ require "spec_helper"
 feature "editing todos" do
   let!(:user)  { Factory(:confirmed_user) }
   let!(:team) { Factory(:team, name: "my awesome team") }
-  let!(:todo) { Factory(:todo, team_id: team.id) }
+  let!(:member) { Factory(:member, team_id: team.id) }
+  let!(:todo) { Factory(:todo, team_id: team.id, member_id: member.id) }
   before do
     user.teams<<(team)
     sign_in_as!(user)
@@ -15,14 +16,14 @@ feature "editing todos" do
   end
 
   scenario "edit a todo" do
-    fill_in "What", with: "Bathroom Cleaning"
+    fill_in "what", with: "Bathroom Cleaning"
     click_button "Update Todo"
     page.should have_content("Your todo has been updated.")
     page.should have_content("Bathroom Cleaning")
   end
 
   scenario "don't edit a todo with bad data" do
-    fill_in "What", with: ""
+    fill_in "what", with: ""
     click_button "Update Todo"
     page.should have_content("Your todo has not been updated.")
   end
