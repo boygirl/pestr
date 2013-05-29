@@ -1,9 +1,12 @@
 <%= form_for [@team, Todo.new] do |f| %>
   <%= f.error_messages %>
+
   <% members_array = Member.where(team_id: @team.id).map { |member| [member.name, member.id] }%>
+
   <% members_array.unshift(["Someone", 0 ]) %>
   <%= f.select :member_id,
     options_for_select(members_array) %>
+
     <b>needs to</b>
     <%= f.text_field :what, placeholder: "do something",
       class: "field", id: "what" %>
